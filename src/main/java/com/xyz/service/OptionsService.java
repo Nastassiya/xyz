@@ -2,9 +2,7 @@ package com.xyz.service;
 
 import com.xyz.Start;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -84,12 +82,10 @@ public class OptionsService {
                 .replace(",", "").trim().split(" "));
         Set<String> uniqueWords = new HashSet<>(duplicate);
         for (String word : uniqueWords) {
-//            System.out.println(word + " is duplicated " + Collections.frequency(duplicate, word));
             countDuplicate.put(word, Collections.frequency(duplicate, word));
         }
         LinkedHashMap<String, Integer> output = new LinkedHashMap<>();
         countDuplicate.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                .filter(x -> x.getValue()>1)
                 .limit(10)
                 .forEachOrdered(x -> output.put(x.getKey(), x.getValue()));
         return output.keySet();
