@@ -89,6 +89,7 @@ public class OptionsService {
         }
         LinkedHashMap<String, Integer> output = new LinkedHashMap<>();
         countDuplicate.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .filter(x -> x.getValue()>1)
                 .limit(10)
                 .forEachOrdered(x -> output.put(x.getKey(), x.getValue()));
         return output.keySet();
