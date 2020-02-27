@@ -1,11 +1,9 @@
-package com.xyz;
-
-import com.xyz.service.OptionsService;
+package com.xyz.service;
 
 import java.io.IOException;
 
 public class Start {
-    public static String filename;
+    public static String filename; //javac Start.java file.txt
 
     public static void main(String[] args) throws IOException {
         int secondArgument = args.length - 1;
