@@ -2,7 +2,11 @@ package com.xyz.service;
 
 import com.xyz.Start;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
@@ -13,21 +17,25 @@ public class OptionsService {
     static public List<String> defaultOptions = Arrays.asList("m", "w", "X");
 
     public boolean isReadableFile(String fileName) {
-        if (fileName.contains(".txt")) {
-            Path path = Paths.get(fileName);
+        Path path = Paths.get(fileName);
+        boolean exists = Files.exists(path);
+        File file = new File(String.valueOf(path));
+
+        if (exists && file.length() != 0 && fileName.contains(".txt")) {
             Scanner readFile = null;
             try {
-                readFile = new Scanner(path);
+                readFile = new Scanner(file);
             } catch (IOException e) {
                 e.printStackTrace();
             }
             textFromFile = new StringBuilder();
-            while (readFile != null && readFile.hasNextLine()) {
-                textFromFile.append(readFile.nextLine()).append("\n");
+            if (readFile != null) {
+                while (readFile.hasNextLine()) {
+                    textFromFile.append(readFile.nextLine()).append("\n");
+                }
+                readFile.close();
+                return true;
             }
-            readFile.close();
-//            System.out.println(textFromFile);
-            return true;
         }
         return false;
     }

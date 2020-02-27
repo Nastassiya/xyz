@@ -1,1 +1,1 @@
-A security manager is an object that defines a security policy for an application. This policy specifies actions that are unsafe or sensitive. Any actions not allowed by the security policy cause a SecurityException to be thrown.
+gfhjk bgb

@@ -13,7 +13,7 @@ public class Start {
         if (args.length > 0) {
             OptionsService optionsService = new OptionsService();
             filename = args[secondArgument];
-            if (!optionsService.isReadableFile(filename)) { throw new IOException("input name file with extension!"); }
+            if (!optionsService.isReadableFile(filename)) { throw new IOException("file is empty or not correctly name of file!"); }
 
             if (args.length == 1) { optionsService.validateOptions(args[secondArgument]); }
 
