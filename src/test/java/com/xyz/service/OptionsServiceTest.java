@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 public class OptionsServiceTest {
 
     private OptionsService service = new OptionsService();
-    private String filename = "file.txt";
+    private String filename = "file.txt"; // or path to file D:/projects/XYZ/file.txt
 
     @Before
     public void readFile() {

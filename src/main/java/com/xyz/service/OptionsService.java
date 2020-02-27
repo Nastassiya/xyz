@@ -14,7 +14,7 @@ public class OptionsService {
     private StringBuilder textFromFile;
     static public List<String> defaultOptions = Arrays.asList("m", "w", "X");
 
-    public boolean isReadableFile(String fileName) {
+    public boolean isReadableFile(String fileName)  {
         Path path = Paths.get(fileName);
         boolean exists = Files.exists(path);
         File file = new File(String.valueOf(path));
