@@ -80,8 +80,8 @@ public class OptionsService {
         Map<String, Integer> countDuplicate = new HashMap<>();
         List<String> duplicate = Arrays.asList(textFromFile.toString().replace(".", "")
                 .replace(",", "").trim().split(" "));
-        Set<String> uniqueWords = new HashSet<>(duplicate);
-        for (String word : uniqueWords) {
+//        Set<String> uniqueWords = new HashSet<>(duplicate);
+        for (String word : duplicate) {
             countDuplicate.put(word, Collections.frequency(duplicate, word));
         }
         LinkedHashMap<String, Integer> output = new LinkedHashMap<>();

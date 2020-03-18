@@ -5,27 +5,18 @@ import com.xyz.service.OptionsService;
 import java.io.IOException;
 
 public class Start {
-    public static String filename; //javac com.xyz.Start.java file.txt
+    public static String filename;
 
-    public static void main(String[] args) throws IOException {
-        int secondArgument = args.length - 1;
-        int firstArgument = args.length - 2;
-        if (args.length > 0) {
+    public static void main(String[] args) {
+        if (args.length > 0 && args.length <= 2) {
             OptionsService optionsService = new OptionsService();
-            filename = args[secondArgument];
+            filename = args[args.length - 1];
+
             if (!optionsService.isReadableFile(filename)) {
-                throw new IOException("file is empty or not correctly name of file!");
+                System.out.println("file is empty or not correctly name of file!");
             }
+            optionsService.validateOptions(args[0]);
 
-            if (args.length == 1) {
-                optionsService.validateOptions(args[secondArgument]);
-            }
-
-            if (args.length == 2) {
-                for (int i = 0; i < args.length - 1; i++) {
-                    optionsService.validateOptions(args[firstArgument]);
-                }
-            }
         } else System.out.println("input correct parameters!");
     }
 }
